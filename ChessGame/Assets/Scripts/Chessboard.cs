@@ -15,9 +15,18 @@ public class Chessboard : MonoBehaviour
     private GameObject[,] tiles;
     private void Awake()
     {
-        GenerateAllTiles(1, 8, 8);
+        GenerateAllTiles(1, tileCountX, tileCountY);
+    }
+    private void Update()
+    {
+        if (!currentCamera)
+        {
+            currentCamera = Camera.current;
+            return;
+        }
     }
 
+    //Generate the board
     private void GenerateAllTiles(float tileSize, int tileCountX, int tileCountY)
     {
         tiles = new GameObject[tileCountX, tileCountY];
